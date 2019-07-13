@@ -2,4 +2,4 @@
 
 echo "DOCKER IS RUNNING..."
 
-docker-compose up -d redis mysql
+docker-compose up -d redis mariadb

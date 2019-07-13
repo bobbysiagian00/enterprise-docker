@@ -11,6 +11,8 @@ volumes:
     driver: ${VOLUMES_DRIVER}
   percona:
     driver: ${VOLUMES_DRIVER}
+  mariadb:
+    driver: ${VOLUMES_DRIVER}
   redis:
     driver: ${VOLUMES_DRIVER}
   mongo:
@@ -163,6 +165,27 @@ services:
         - ${PERCONA_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
       ports:
         - "${PERCONA_PORT}:3306"
+      networks:
+        - backend
+
+### MariaDB ##############################################
+    mariadb:
+      build:
+        context: ./mariadb
+        args:
+          - http_proxy
+          - https_proxy
+          - no_proxy
+      volumes:
+        - ${DATA_PATH_HOST}/mariadb:/var/lib/mysql
+        - ${MARIADB_ENTRYPOINT_INITDB}:/docker-entrypoint-initdb.d
+      ports:
+        - "${MARIADB_PORT}:3306"
+      environment:
+        - MYSQL_DATABASE=${MARIADB_DATABASE}
+        - MYSQL_USER=${MARIADB_USER}
+        - MYSQL_PASSWORD=${MARIADB_PASSWORD}
+        - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       networks:
         - backend
 
