@@ -18,7 +18,11 @@ ON PROGRESS
 - One script installation (Apps, Environment, etc)
 
 SONARCUBE
-- Get latest .env from @bobbysiagian
+- Get latest .env from @b2b-squad
+- Ubuntu Case :
+  - Check the postgres IP address in **postgres container**, and adjust to SONARQUBE_POSTGRES_HOST in .env file
+  - if you got an error (max virtual memory areas vm.max_map_count), exec this in terminal **sysctl -w vm.max_map_count=262144**
+  - ensure group user in folder **$DATA_PATH_HOST/sonarqube** is not root
 - run up.sh
 - Login http://localhost:9000/
 - Create new project, name:enterprise, Key:enterprise
