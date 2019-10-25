@@ -1,4 +1,5 @@
-FROM percona:5.7
+ARG PERCONA_VERSION=5.7
+FROM percona:${PERCONA_VERSION}
 
 LABEL maintainer="DTUNES <diegotdai@gmai.com>"
 
