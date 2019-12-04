@@ -2,4 +2,4 @@
 
 echo "DOCKER IS RUNNING..."
 
-docker-compose up -d postgres sonarqube
+docker-compose up -d postgres redis nsqlookupd nsqd nsqadmin
